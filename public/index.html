@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c0c13"><title>Retro Lobby — Quetzal Online</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/">▣ RETRO<span>LOBBY</span></a><div class="top-status"><i></i><span id="connectionLabel">MENGHUBUNGKAN SERVER…</span><span class="pill">PROTOTYPE</span></div></header>
+<main class="shell">
+  <section class="hero"><div class="eyebrow">POKÉMON QUETZAL · REMOTE LOBBY</div><h1>PRESS START.<br><span>MEET ONLINE.</span></h1>
+    <p>Room online sungguhan untuk mengundang teman dan mengobrol. Emulator browser tersedia sebagai uji single-player, tetapi belum menyinkronkan game Quetzal antar pemain.</p>
+    <div class="notice"><b>STATUS JUJUR:</b> server lobby aktif setelah aplikasi ini di-deploy. Multiplayer trade/battle Quetzal tetap harus memakai metode yang kompatibel dengan Quetzal; room website ini tidak menggantikan Netplay/fitur online game.</div>
+  </section>
+  <section class="layout">
+    <div class="panel">
+      <div class="panel-head"><div><span class="section-index">01 / ROOM ONLINE</span><h2>Buat atau gabung room</h2></div><span class="pixel-icon">▤</span></div>
+      <label for="playerName">NAMA PEMAIN</label><input id="playerName" maxlength="20" placeholder="Contoh: Bayu" autocomplete="nickname">
+      <label for="mode">MODE QUETZAL</label><select id="mode"><option value="trade">Trade Pokémon — Trade Center</option><option value="battle">Battle Pokémon — Colosseum</option><option value="coop">Co-op / MPlayer</option></select>
+      <button class="button primary full" id="createButton">＋ BUAT ROOM ONLINE</button>
+      <div class="join-row"><input id="joinCode" maxlength="5" placeholder="KODE ROOM" aria-label="Kode room"><button class="button secondary" id="joinButton">GABUNG</button></div>
+      <div id="roomPanel" class="room-panel" hidden>
+        <div class="invite-top"><span>ROOM ONLINE</span><span id="roomStatus" class="pill warning">MENUNGGU</span></div>
+        <div id="roomCode" class="invite-code">-----</div>
+        <p id="roomSummary" class="muted"></p>
+        <div id="players" class="players"></div>
+        <div class="room-actions"><button id="copyButton" class="button secondary">SALIN UNDANGAN</button><button id="startButton" class="button primary">SIAPKAN SESI</button><button id="leaveButton" class="button danger">KELUAR</button></div>
+        <p class="tiny-note">Room ini mengelola kehadiran dan chat saja. Belum mengirim input emulator atau menyamakan state game.</p>
+      </div>
+      <p id="error" class="error" role="status"></p>
+    </div>
+    <aside class="panel">
+      <div class="panel-head"><div><span class="section-index">02 / QUETZAL GUIDE</span><h2>Siapkan multiplayer game</h2></div><span class="pixel-icon">⌁</span></div>
+      <ol class="guide"><li>Pastikan versi Quetzal kedua pemain sama dan backup save.</li><li>Ikuti konfigurasi online yang dijelaskan di panduan Quetzal resmi.</li><li>Untuk trade, masuk ke Trade Center; untuk battle, masuk ke Colosseum sesuai panduan game.</li></ol>
+      <a class="text-link" href="https://www.pkmnquetzal.top/en/online-tutorial/online-tutorial.html" target="_blank" rel="noopener">BUKA PANDUAN ONLINE QUETZAL ↗</a>
+      <div class="notice compact"><b>Jangan menganggap Netplay biasa otomatis mendukung Quetzal.</b> Metode koneksi dan core harus mengikuti panduan game. Room web ini tidak membuat koneksi emulator secara otomatis.</div>
+    </aside>
+  </section>
+  <section class="panel emulator-panel">
+    <div class="panel-head"><div><span class="section-index">03 / BROWSER EMULATOR</span><h2>Uji emulator GBA</h2></div><span class="pill warning">SINGLE-PLAYER</span></div>
+    <p class="muted">Pilih ROM lokal yang kamu miliki secara sah. File ROM tetap di browser kamu dan tidak diunggah ke server Retro Lobby. Emulator ini untuk uji bermain sendiri, bukan multiplayer Quetzal.</p>
+    <label class="file-picker" for="romFile">PILIH FILE ROM GBA (.gba)</label><input id="romFile" type="file" accept=".gba,application/octet-stream">
+    <div id="game" class="game-screen"><div class="game-placeholder"><span>▣</span><b>EMULATOR BELUM DIMUAT</b><small>Pilih file ROM milikmu untuk memulai.</small></div></div>
+    <p id="emulatorStatus" class="tiny-note">Emulator dimuat dari CDN pihak ketiga saat kamu memilih ROM. Koneksi internet diperlukan.</p>
+  </section>
+  <section class="panel chat-panel">
+    <div class="panel-head"><div><span class="section-index">04 / ROOM CHAT</span><h2>Chat pemain</h2></div></div>
+    <div id="chatLog" class="chat-log" aria-live="polite"><p class="muted">Gabung ke room untuk mulai chat.</p></div>
+    <form id="chatForm" class="chat-form"><input id="chatInput" maxlength="240" placeholder="Pesan untuk teman…" disabled><button class="button secondary" id="chatSend" disabled>KIRIM</button></form>
+  </section>
+  <footer>RETRO LOBBY · PROTOTIPE TERBUKA · Tidak menyertakan ROM Pokémon.</footer>
+</main>
+<script src="/socket.io/socket.io.js"></script><script src="/app.js"></script>
+</body></html>

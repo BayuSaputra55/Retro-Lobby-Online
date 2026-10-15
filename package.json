@@ -1,0 +1,16 @@
+{
+  "name": "retro-lobby-online",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Online room lobby prototype for Pokémon Quetzal; browser emulator is single-player only.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  }
+}
